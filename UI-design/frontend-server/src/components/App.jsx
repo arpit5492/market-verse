@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/";
+const API_URL = "http://localhost:4000/";
 
 function App(){
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     useEffect(() => {
         axios.get(API_URL)
             .then((res) => {
+                // console.log(res.data);
                 setData(res.data);
             })
     })

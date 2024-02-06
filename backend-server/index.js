@@ -1,16 +1,15 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-const port = 3000;
-
-const data = "Arpit Mallick";
+import data from "./db.js";
+const port = 4000;
 
 const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send(data);
+    res.json(data);
 });
 
 //Listening for requests
