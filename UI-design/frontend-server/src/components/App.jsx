@@ -1,22 +1,32 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import Home from "./Home";
 
 const API_URL = "http://localhost:4000/";
 
 function App(){
     const [data, setData] = useState([]);
-    useEffect(() => {
-        axios.get(API_URL)
-            .then((res) => {
-                // console.log(res.data);
-                setData(res.data);
-            })
-    })
+    const getUser = () => {
+        fetch(API_URL)
+         .then(res => res.json())
+         .then(json => setData(json))
+    }
 
+    useEffect(() => {
+        getUser();
+    }, []);
+        
     // console.log(data);
     return (
         <div>
-            <h1>Hello {data}</h1>
+            {data.map(user => {
+                return (
+                    <Home 
+                        key = {user.id}
+                        name = {user.name}
+                        brand_name = {user.brand_name}
+                    />
+                )
+            })}
         </div>
     )
 }
