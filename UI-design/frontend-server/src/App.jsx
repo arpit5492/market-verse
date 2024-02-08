@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import Home from "./Home";
+import Home from "./components/Home.jsx";
 
-const API_URL = "http://localhost:4000/";
+const API_URL = "http://localhost:4000/users";
 
 function App(){
     const [data, setData] = useState([]);
@@ -15,15 +15,17 @@ function App(){
         getUser();
     }, []);
         
-    // console.log(data);
+    console.log(data);
     return (
         <div>
             {data.map(user => {
                 return (
                     <Home 
-                        key = {user.id}
-                        name = {user.name}
-                        brand_name = {user.brand_name}
+                        key = {user.user_id}
+                        full_name = {user.full_name}
+                        email = {user.email}
+                        username = {user.username}
+                        password = {user.password}
                     />
                 )
             })}

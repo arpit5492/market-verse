@@ -1,16 +1,13 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import data from "./db.js";
+import userDbRoutes from "./services/user-service.js";
 const port = 4000;
 
 const app = express();
 app.use(morgan("dev"));
 app.use(cors());
-
-app.get("/", (req, res) => {
-    res.json(data);
-});
+app.use(userDbRoutes);
 
 //Listening for requests
 app.listen(port, () => {
