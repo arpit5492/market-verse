@@ -8,17 +8,21 @@ function NavBar() {
             <Link>
                 <h1 className="text-2xl font-semibold">Market Verse</h1>
             </Link>
-            <ul className="space-x-4 text-gray-600 font-medium text-lg">
-                <Link>
-                    <button className="px-4">
-                        <li>Login</li>
-                    </button>
-                </Link>
-                <Link>
-                    <button className="px-4">
-                        <li>Cart</li>
-                    </button>
-                </Link>
+            <ul className="flex space-x-4 text-gray-600 font-medium text-lg">
+                <>
+                    <li className="px-4">
+                        <Link>
+                            <button>
+                                <span>Login</span>
+                            </button>
+                        </Link>
+                    </li>
+                    <li className="px-4">
+                        <button>
+                            <span>Cart</span>
+                        </button>
+                    </li>
+                </>
             </ul>
         </nav>
     )
