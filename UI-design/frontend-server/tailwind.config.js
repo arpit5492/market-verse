@@ -6,7 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'new-green': '#74c8a9'
+        'new-green': {
+          50: '#a3d2b0',
+          100: '#74c8a9',
+          150: '#29a337'
+        }
       }
     }
   },
