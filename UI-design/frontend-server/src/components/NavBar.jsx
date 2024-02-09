@@ -6,7 +6,7 @@ function NavBar() {
     return (
         <nav className="flex justify-between px-36 font-sans items-center bg-blue-200 py-2 w-full shadow-lg">
             <Link>
-                <h1 className="text-2xl font-semibold">Market Verse</h1>
+                <h1 className="text-2xl text-sky-400 font-semibold">Market Verse</h1>
             </Link>
             <ul className="flex space-x-4 text-gray-600 font-medium text-lg">
                 <>
