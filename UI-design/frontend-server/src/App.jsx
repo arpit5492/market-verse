@@ -15,7 +15,7 @@ function App(){
         getUser();
     }, []);
         
-    console.log(data);
+    // console.log(data);
     return (
         <div>
             {data.map(user => {

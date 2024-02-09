@@ -2,12 +2,13 @@ import React from "react";
 
 function Home(props) {
     return (
-        <div>
-            <h1>Full Name: {props.full_name}</h1>
-            <h2>Email: {props.email}</h2>
-            <h3>Username: {props.username}</h3>
-            <h4>Password: {props.password}</h4>
-        </div>
+        <ul className="list-disc pl-5">
+            <li>
+                <h2 className="text-3xl font-bold underline text-blue-600">Full Name: {props.full_name}</h2>
+                <h3>Email: {props.email}</h3>
+                <h4>Username: {props.username}</h4>
+            </li>
+        </ul>
     )
 }
 
