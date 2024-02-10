@@ -1,8 +1,10 @@
 import React from "react";
 // import Home from "./components/Home.jsx";
 import NavBar from "./components/NavBar.jsx";
-import Footer from "./components/Footer.jsx";
+// import Footer from "./components/Footer.jsx";
 import Login from "./pages/Login.jsx";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home.jsx";
 
 // const API_URL = "http://localhost:4000/users";
 
@@ -22,8 +24,12 @@ function App(){
     return (
         <div>
             <NavBar />
-            <Login />
-            <Footer />
+                <Routes>
+                    <Route path="/" element={
+                        <Home />
+                    } />
+                    <Route path="/login" element={<Login />} />
+                </Routes>
         </div>
     )
 }
