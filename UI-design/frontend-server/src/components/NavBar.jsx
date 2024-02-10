@@ -11,14 +11,14 @@ function NavBar() {
                 <>
                     <li className="px-4">
                         <Link>
-                            <button>
+                            <button className="rounded-full hover:bg-sky-500 py-1 px-3">
                                 <span>Login</span>
                             </button>
                         </Link>
                     </li>
                     <li className="px-4">
                         <Link>
-                            <button>
+                            <button className="rounded-full hover:bg-sky-500 py-1 px-3">
                                 <span>Cart</span>
                             </button>
                         </Link>

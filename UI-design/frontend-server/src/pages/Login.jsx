@@ -32,7 +32,7 @@ function Login() {
                 <div className="flex items-center justify-between">
                     <Link>
                         <button type="submit"
-                        className="bg-new-green-100 hover:bg-new-green-150 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        className="bg-new-green-100 hover:bg-new-green-150 text-white font-bold py-2 px-4 rounded">
                             Sign In
                         </button>
                     </Link>
