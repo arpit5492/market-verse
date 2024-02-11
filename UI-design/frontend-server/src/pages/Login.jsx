@@ -1,8 +1,11 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+
+    const history = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPass] = useState("");
@@ -14,8 +17,8 @@ function Login() {
     const handlePass = (e) => {
         setPass(e.target.value);
     }
-    console.log(email);
-    console.log(password);
+    // console.log(email);
+    // console.log(password);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -23,6 +26,15 @@ function Login() {
         try{
             await axios.post("http://localhost:4000/login", {
                 email, password
+            })
+            .then(res => {
+                const data = res.data;
+                if(data.success === true){
+                    history("/home", {state:{id:data.fullName}})
+                }
+                else{
+                    alert(data.message);
+                }
             })
         }
         catch(error){

@@ -14,7 +14,28 @@ app.use(express.json());
 
 app.post("/login", async (req, res) => {
     const {email, password} = req.body;
-    console.log(email, password);
+    // console.log(email, password);
+    try{
+        const users = await getAllUsers();
+        const user = users.find(data => data.email === email && data.password === password);
+
+        if (user) {
+            res.json({
+                success: true,
+                fullName: user.full_name,
+                userName: user.username
+            })
+        }
+        else {
+            res.json({
+                success: false,
+                message: "Invalid username or password"
+            })
+        }
+    }
+    catch(error){
+        console.log(error);
+    }
 });
 
 export default app;
