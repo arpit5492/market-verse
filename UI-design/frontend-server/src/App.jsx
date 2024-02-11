@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar.jsx";
 // import Footer from "./components/Footer.jsx";
 import Login from "./pages/Login.jsx";
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home.jsx";
+import Home from "./pages/Home.jsx";
 
 // const API_URL = "http://localhost:4000/users";
 
