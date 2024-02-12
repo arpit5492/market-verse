@@ -38,4 +38,8 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.post("/signUp", async(req, res) => {
+    console.log(req.body);
+});
+
 export default app;

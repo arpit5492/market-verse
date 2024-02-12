@@ -1,7 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 function SignUp() {
+
+    const [det, setDet] = useState({
+        fullName: "",
+        email: "",
+        username: "",
+        password: "",
+        confPass: ""
+    });
+    
+    function handleChange(e){
+        const {name, value} = e.target;
+    
+        // console.log(name);
+        // console.log(value);
+
+        setDet(prevValue => {
+            return {
+                ...prevValue,
+                [name]: value
+            }
+        });
+    }
+
+    // console.log(det);
+    
+    async function handleSubmit(e){
+        await axios.post("http://localhost:4000/signUp", det);
+    }
+
+
     return (
         <div className="flex justify-center mt-10 font-sans">
             <form action="" className="bg-gray-100 rounded shadow-md pt-6 px-8 pb-8 w-1/2 md:w-1/3">
@@ -11,6 +43,8 @@ function SignUp() {
                     </label>
                     <input 
                         type="text"
+                        name="fullName"
+                        onChange={handleChange}
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 leading-tight"
                     />
                 </div>
@@ -20,6 +54,8 @@ function SignUp() {
                     </label>
                     <input
                         type="email"
+                        name="email"
+                        onChange={handleChange}
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 leading-tight"
                     />
                 </div>
@@ -29,6 +65,8 @@ function SignUp() {
                     </label>
                     <input
                         type="text" 
+                        name="username"
+                        onChange={handleChange}
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 leading-tight"
                     />
                 </div>
@@ -38,6 +76,8 @@ function SignUp() {
                     </label>
                     <input 
                         type="password" 
+                        name="password"
+                        onChange={handleChange}
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 leading-tight"
                     />
                 </div>
@@ -46,12 +86,14 @@ function SignUp() {
                         Confirm Password
                     </label>
                     <input type="password" 
+                        name="confPass"
+                        onChange={handleChange}
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 leading-tight"
                     />
                 </div>
                 <div className="">
                     <Link>
-                        <button type="submit" className="bg-new-green-100 hover:bg-new-green-150 text-white font-bold py-2 px-4 rounded">
+                        <button type="submit" onClick={handleSubmit} className="bg-new-green-100 hover:bg-new-green-150 text-white font-bold py-2 px-4 rounded">
                             Create Account
                         </button>
                     </Link>
