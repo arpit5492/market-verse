@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar.jsx";
 import Login from "./pages/Login.jsx";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
+import SignUp from "./pages/SignUp.jsx";
 
 // const API_URL = "http://localhost:4000/users";
 
@@ -29,6 +30,7 @@ function App(){
                         <Home />
                     } />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/sign-up" element={<SignUp />} />
                 </Routes>
         </div>
     )
