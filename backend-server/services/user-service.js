@@ -10,19 +10,27 @@ app.use(express.json());
 
 // Post route for login page
 app.post("/login", async (req, res) => {
+    // console.log(req.body);
     const {email, password} = req.body;
     // console.log(email, password);
     try{
         const users = await getAllUsers();
         const user = users.find(data => data.email === email && data.password === password);
 
-        if (user) {
+        if(email === "" || password === ""){
+            res.json({
+                message: "Empty string"
+            });
+        }
+
+        else if (user) {
             res.json({
                 success: true,
                 fullName: user.full_name,
                 userName: user.username
-            })
+            });
         }
+
         else {
             res.json({
                 success: false,

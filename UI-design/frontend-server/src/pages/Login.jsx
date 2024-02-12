@@ -7,15 +7,20 @@ function Login() {
 
     const history = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPass] = useState("");
+    const [det, setDet] = useState({
+        email: "",
+        password: ""
+    });
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    }
+    function handleChange(e) {
+        const {name, value} = e.target;
 
-    const handlePass = (e) => {
-        setPass(e.target.value);
+        setDet(prevValue => {
+            return {
+                ...prevValue,
+                [name]: value
+            }
+        })
     }
     // console.log(email);
     // console.log(password);
@@ -24,14 +29,17 @@ function Login() {
         e.preventDefault();
 
         try{
-            await axios.post("http://localhost:4000/login", {
-                email, password
-            })
+            await axios.post("http://localhost:4000/login", det)
             .then(res => {
                 const data = res.data;
                 if(data.success === true){
                     history("/", {state:{id:data.fullName}})
                 }
+
+                else if(data.message === "Empty string"){
+                    alert("Enter your email and password");
+                }
+
                 else{
                     alert(data.message);
                 }
@@ -53,7 +61,7 @@ function Login() {
                         name="email"
                         placeholder="Enter your email"
                         className="shadow border rounded appearance-none text-md w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
-                        onChange={handleEmail}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="mb-6">
@@ -64,7 +72,7 @@ function Login() {
                         placeholder="Enter your password" 
                         name="password"
                         className="shadow border rounded appearance-none w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
-                        onChange={handlePass}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
