@@ -38,6 +38,7 @@ function SignUp() {
             await axios.post("http://localhost:4000/signUp", det)
             .then(res => {
                 const data = res.data;
+                // console.log(data);
                 if(data.success === true){
                     history("/", {state:{id:data.fullName}});
                 }
@@ -45,7 +46,7 @@ function SignUp() {
                     alert("Username or email already exists");
                 }
                 else{
-                    alert("Can't login");
+                    alert("Password does not match");
                 }
             })
         }

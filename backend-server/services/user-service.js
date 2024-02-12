@@ -1,4 +1,4 @@
-import getAllUsers from "../db/user-db.js";
+import {getAllUsers, createUser} from "../db/user-db.js"
 import express from "express";
 import bodyParser from "body-parser";
 import db from "../config/index.js";
@@ -8,11 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
-// app.get("/users", async (req, res) => {
-//     const data = await getAllUsers();
-//     res.json(data);
-// });
-
+// Post route for login page
 app.post("/login", async (req, res) => {
     const {email, password} = req.body;
     // console.log(email, password);
@@ -39,15 +35,29 @@ app.post("/login", async (req, res) => {
     }
 });
 
+// Post route for creating an account
 app.post("/signUp", async(req, res) => {
     const data = req.body;
+    // console.log(data);
     try{
-        await db.query("INSERT INTO users (full_name, email, username, password) VALUES ($1, $2, $3, $4)", 
-        [data.fullName, data.email, data.username, data.password]);
-        res.json({
-            fullName: data.fullName,
-            success: true
-        });
+        if(data.password === data.confPass){
+            const newUser = await createUser({
+                fullName: data.fullName,
+                email: data.email,
+                username: data.username,
+                password: data.password
+            });
+            // console.log(newUser);
+            res.json({
+                fullName: newUser.full_name,
+                success: true
+            });
+        }
+        else {
+            res.json({
+                success: false
+            })
+        }
     }
     catch(error){
         res.json({
