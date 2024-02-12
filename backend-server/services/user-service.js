@@ -1,6 +1,7 @@
 import getAllUsers from "../db/user-db.js";
 import express from "express";
 import bodyParser from "body-parser";
+import db from "../config/index.js";
 
 const app = express();
 
@@ -39,7 +40,20 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/signUp", async(req, res) => {
-    console.log(req.body);
+    const data = req.body;
+    try{
+        await db.query("INSERT INTO users (full_name, email, username, password) VALUES ($1, $2, $3, $4)", 
+        [data.fullName, data.email, data.username, data.password]);
+        res.json({
+            fullName: data.fullName,
+            success: true
+        });
+    }
+    catch(error){
+        res.json({
+            err: "Already exists"
+        });
+    }
 });
 
 export default app;

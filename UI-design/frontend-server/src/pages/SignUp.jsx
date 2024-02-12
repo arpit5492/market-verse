@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function SignUp() {
+
+    const history = useNavigate();
 
     const [det, setDet] = useState({
         fullName: "",
@@ -30,7 +33,25 @@ function SignUp() {
     // console.log(det);
     
     async function handleSubmit(e){
-        await axios.post("http://localhost:4000/signUp", det);
+
+        try{
+            await axios.post("http://localhost:4000/signUp", det)
+            .then(res => {
+                const data = res.data;
+                if(data.success === true){
+                    history("/", {state:{id:data.fullName}});
+                }
+                else if(data.err === "Already exists"){
+                    alert("Username or email already exists");
+                }
+                else{
+                    alert("Can't login");
+                }
+            })
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
 
