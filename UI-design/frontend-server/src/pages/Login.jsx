@@ -30,7 +30,7 @@ function Login() {
             .then(res => {
                 const data = res.data;
                 if(data.success === true){
-                    history("/home", {state:{id:data.fullName}})
+                    history("/", {state:{id:data.fullName}})
                 }
                 else{
                     alert(data.message);

@@ -26,7 +26,7 @@ function App(){
         <div>
             <NavBar />
                 <Routes>
-                    <Route path="/home" element={
+                    <Route path="/" element={
                         <Home />
                     } />
                     <Route path="/login" element={<Login />} />
