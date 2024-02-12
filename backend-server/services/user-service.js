@@ -34,7 +34,7 @@ app.post("/login", async (req, res) => {
         else {
             res.json({
                 success: false,
-                message: "Invalid username or password"
+                message: "Invalid email or password"
             })
         }
     }

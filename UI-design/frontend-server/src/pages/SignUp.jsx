@@ -46,7 +46,7 @@ function SignUp() {
                     alert("Username or email already exists");
                 }
                 else{
-                    alert("Password does not match");
+                    alert("Password do not match");
                 }
             })
         }
