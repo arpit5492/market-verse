@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.10
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=market-verse
+      - POSTGRES_USER=postgres
+    ports: 
+      - 5434:5432
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+
+  api:
+    container_name: market_api
+    restart: unless-stopped
+    image: market-api-prod:1.0.0
+    build:
+      context: ./backend-server
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend-server/.env
+    ports: 
+      - 4000:4000
+    depends_on:
+      - postgres
+  
+  client:
+    container_name: market_client
+    restart: unless-stopped
+    image: market-client-prod:1.0.0
+    build:
+      context: ./UI-design/frontend-server
+      dockerfile: Dockerfile
+    ports: 
+      - 3000:3000
+    depends_on:
+      - api
