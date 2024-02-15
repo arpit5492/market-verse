@@ -1,40 +1,55 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:14.10
+  db:
+    container_name: postgres_container
+    image: postgres
     restart: always
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=market-verse
-      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
     ports: 
-      - 5434:5432
+      - "5434:5432"
     volumes:
-      - ./postgres-db:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@example.com
+      - PGADMIN_DEFAULT_PASSWORD=adminpassword
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
 
   api:
     container_name: market_api
-    restart: unless-stopped
-    image: market-api-prod:1.0.0
+    restart: always
+    image: market-api-prod
     build:
       context: ./backend-server
       dockerfile: Dockerfile
     env_file:
       - ./backend-server/.env
     ports: 
-      - 4000:4000
+      - "4000:4000"
     depends_on:
-      - postgres
+      - db
   
   client:
     container_name: market_client
-    restart: unless-stopped
-    image: market-client-prod:1.0.0
+    restart: always
+    image: market-client-prod
     build:
       context: ./UI-design/frontend-server
       dockerfile: Dockerfile
     ports: 
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - api

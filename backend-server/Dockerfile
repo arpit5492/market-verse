@@ -1,4 +1,4 @@
-FROM node:16 AS Production
+FROM node:16
 
 WORKDIR /usr/src/api
 
