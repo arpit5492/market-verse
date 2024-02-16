@@ -58,6 +58,7 @@ app.post("/signUp", async(req, res) => {
             // console.log(newUser);
             res.json({
                 fullName: newUser.full_name,
+                userName: newUser.username,
                 success: true
             });
         }
