@@ -1,18 +1,15 @@
 import React, {useState, useEffect} from "react";
-import { useLocation} from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:4000/products";
 
 function Home() {
-    const location = useLocation();
-    const msg = location.state && location.state.id ? `Welcome ${location.state.id} to the Home Page` : "Guest Login";
 
     const [data, setData] = useState([]);
     const getProd = () => {
         fetch(API_URL)
          .then(res => res.json())
-         .then(json => setData(json))
+         .then(newData => setData(newData))
     }
 
     useEffect(() => {
@@ -20,9 +17,7 @@ function Home() {
     }, []);
 
     return (
-        <div className="">
-            <p className="text-2xl font-bold">{msg}</p>
-            <div className="mt-24 flex">
+        <div className="mt-24 flex">
             {data.map(prod => {
                 return (
                     <div className="mb-10 mr-5">
@@ -35,7 +30,6 @@ function Home() {
                     </div>
                 )
             })}
-            </div>
         </div>
     )
 }

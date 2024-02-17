@@ -33,7 +33,7 @@ function Login() {
             .then(res => {
                 const data = res.data;
                 if(data.success === true){
-                    history("/", {state:{id:data.userName}})
+                    history("/", {state:{id:data.userName}});
                 }
 
                 else if(data.message === "Empty string"){
