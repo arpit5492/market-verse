@@ -9,7 +9,7 @@ function NavBar() {
     if(location.state && location.state.id){
         return (
             <nav className="flex justify-between px-36 font-sans items-center bg-new-green-50 py-2 w-full shadow-md">
-                <Link to="/">
+                <Link>
                     <h1 className="text-2xl text-sky-700 font-semibold">Market Verse</h1>
                 </Link>
                 <ul className="flex text-gray-800 font-medium text-lg">
@@ -22,18 +22,18 @@ function NavBar() {
                             </Link>
                         </li>
                         <li className="px-4">
-                            <Link>
+                            {/* <Link> */}
                                 <button className="rounded-full hover:bg-sky-500 py-1 px-3">
                                     <span>Cart</span>
                                 </button>
-                            </Link>
+                            {/* </Link> */}
                         </li>
                         <li className="px-4 mr-5">
-                            <Link>
+                            {/* <Link> */}
                                 <button className="rounded-full hover:bg-sky-500 py-1 px-3">
                                     <span>{location.state.id}</span>
                                 </button>
-                            </Link>
+                            {/* </Link> */}
                         </li>
                     </>
                 </ul>
@@ -42,7 +42,7 @@ function NavBar() {
     }
     else {
         return (
-            <nav className="flex justify-between px-36 font-sans items-center bg-new-green-50 py-2 w-full shadow-md">
+            <nav className="flex justify-between px-36 font-sans items-center bg-new-green-50 py-2 w-full md:w-full shadow-md">
                 <Link to="/">
                     <h1 className="text-2xl text-sky-700 font-semibold">Market Verse</h1>
                 </Link>
@@ -56,11 +56,11 @@ function NavBar() {
                             </Link>
                         </li>
                         <li className="px-4">
-                            <Link>
+                            {/* <Link> */}
                                 <button className="rounded-full hover:bg-sky-500 py-1 px-3">
                                     <span>Cart</span>
                                 </button>
-                            </Link>
+                            {/* </Link> */}
                         </li>
                     </>
                 </ul>
