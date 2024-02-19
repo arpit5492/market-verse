@@ -58,7 +58,7 @@ function SignUp() {
 
     return (
         <div className="flex justify-center mt-10 font-sans">
-            <form action="" className="bg-gray-100 rounded shadow-md pt-6 px-8 pb-8 w-1/2 md:w-1/3">
+            <form action="" className="bg-gray-100 rounded shadow-xl pt-6 px-8 pb-8 w-1/2 md:w-1/3">
                 <div className="mb-4">
                     <label htmlFor="fullName" className="block text-gray-700 font-bold text-md mb-2">
                         Full Name
