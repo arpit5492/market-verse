@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Products from "../components/Products";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:4000/products";
 
@@ -20,13 +20,16 @@ function Home() {
         <div className="mt-24 flex w-full">
             {data.map(prod => {
                 return (
-                    <Products
-                        key = {prod.product_id}
-                        image_url = {prod.image_url}
-                        price = {prod.price}
-                        product_name = {prod.product_name}
-                        brand_name = {prod.brand_name}
-                    />
+                    <React.Fragment key={prod.product_id}>
+                        <div className="mb-10 mr-10 columns-xl">
+                            <Link to={`/product/${prod.product_id}`}>
+                                <img className="size-28" src={prod.image_url} alt={prod.product_name} />
+                                <p className="text-2xl md:text-base">{prod.product_name}</p>
+                                <p className="text-l md:text-sm text-gray-700 font-serif font-bold italic">Brand: {prod.brand_name}</p>
+                                <p className="text-xl md:text-sm font-semibold text-gray-500">${prod.price}</p>        
+                            </Link>
+                        </div>
+                    </React.Fragment>
                 )
             })}
         </div>

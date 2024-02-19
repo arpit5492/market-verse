@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from "react";
-
-const API_URL = "http://localhost:4000/singleProd/6";
+import React, {useState, useEffect, useCallback} from "react";
+import { useParams } from "react-router-dom";
 
 function ProdDetails() {
     const [prodDet, setProdDet] = useState({});
-    const getProd = () => {
-        fetch(API_URL)
+    const {id} = useParams();
+    const getProd = useCallback(() => {
+        fetch(`http://localhost:4000/product/?id=${id}`)
          .then(res => res.json())
          .then(newData => setProdDet(newData))
-    }
+    }, [id]);
 
     useEffect(() => {
         getProd();
-    }, []);
+    }, [getProd]);
     
     return (
         <div>

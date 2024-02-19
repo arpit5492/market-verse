@@ -10,8 +10,8 @@ app.get("/products", async (req, res) => {
 });
 
 //Getting a single product
-app.get("/singleProd/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
+app.get("/product", async (req, res) => {
+    const id = parseInt(req.query.id);
     const products = await getAllProducts();
     const singleProd = products.find((prod) => prod.product_id === id);
     res.json(singleProd);
