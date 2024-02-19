@@ -40,7 +40,7 @@ function SignUp() {
                 const data = res.data;
                 // console.log(data);
                 if(data.success === true){
-                    history("/", {state:{id:data.fullName}});
+                    history("/", {state:{id:data.userName}});
                 }
                 else if(data.err === "Already exists"){
                     alert("Username or email already exists");

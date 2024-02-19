@@ -31,7 +31,7 @@ services:
   api:
     container_name: market_api
     restart: always
-    image: market-api-prod
+    image: arpit5492/market-verse:market-api-latest
     build:
       context: ./backend-server
       dockerfile: Dockerfile
@@ -45,7 +45,7 @@ services:
   client:
     container_name: market_client
     restart: always
-    image: market-client-prod
+    image: arpit5492/market-verse:market-client-latest
     build:
       context: ./UI-design/frontend-server
       dockerfile: Dockerfile
