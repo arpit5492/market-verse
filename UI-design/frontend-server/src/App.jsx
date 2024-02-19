@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import ProdDetails from "./pages/Prod-Details.jsx";
+import NotFound from "./pages/Not-Found.jsx";
 
 function App(){
     return (
@@ -18,6 +19,7 @@ function App(){
                     <Route path="/login" element={<Login />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/product/:id" element={<ProdDetails />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
         </div>
     )
