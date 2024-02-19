@@ -5,7 +5,7 @@ function ProdDetails() {
     const [prodDet, setProdDet] = useState({});
     const {id} = useParams();
     const getProd = useCallback(() => {
-        fetch(`http://localhost:4000/product/?id=${id}`)
+        fetch(`http://localhost:4000/product/`)
          .then(res => res.json())
          .then(newData => setProdDet(newData))
     }, [id]);
