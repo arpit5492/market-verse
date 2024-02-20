@@ -30,7 +30,7 @@ function Home() {
                                     className="size-36"
                                 />
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-4 mr-4 ml-4">
                                 <div>
                                     <h3 className="text-md text-gray-900 font-bold">
                                         <Link to={`/product/${product.product_id}`}>
