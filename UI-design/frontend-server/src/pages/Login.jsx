@@ -52,7 +52,7 @@ function Login() {
 
     return (
         <div className="flex justify-center mt-36 m-auto font-sans">
-            <form action="post" className="bg-gray-100 shadow-md rounded pt-6 px-8 pb-8 flex-col w-1/2 md:w-1/3">
+            <form action="post" className="bg-gray-100 shadow-xl rounded pt-6 px-8 pb-8 flex-col w-1/2 md:w-1/3">
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 text-md font-bold mb-2">
                         Email

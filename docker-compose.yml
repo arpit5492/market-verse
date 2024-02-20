@@ -41,6 +41,15 @@ services:
       - "4000:4000"
     depends_on:
       - db
+    develop:
+      watch:
+        - action: sync
+          path: ./backend-server
+          target: /usr/src/api
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./backend-server/package.json
   
   client:
     container_name: market_client
@@ -53,3 +62,12 @@ services:
       - "3000:3000"
     depends_on:
       - api
+    develop:
+      watch:
+        - action: sync
+          path: ./UI-design/frontend-server
+          target: /usr/src/client
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./UI-design/frontend-server/package.json
