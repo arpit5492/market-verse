@@ -6,14 +6,10 @@ const API_URL = "http://localhost:4000/products";
 function Home() {
 
     const [data, setData] = useState([]);
-    const getProd = () => {
-        fetch(API_URL)
-         .then(res => res.json())
-         .then(newData => setData(newData))
-    }
-
     useEffect(() => {
-        getProd();
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(json => setData(json))
     }, []);
 
     return (
