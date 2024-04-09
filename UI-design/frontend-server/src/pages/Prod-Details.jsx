@@ -1,18 +1,14 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 
 function ProdDetails() {
     const [prodDet, setProdDet] = useState({});
     const {id} = useParams();
-    const getProd = useCallback(() => {
-        fetch(`http://localhost:4000/product/?id=${id}`)
-         .then(res => res.json())
-         .then(newData => setProdDet(newData))
-    }, [id]);
-
     useEffect(() => {
-        getProd();
-    }, [getProd]);
+        fetch(`http://localhost:4000/product/?id=${id}`)
+            .then(res => res.json())
+            .then(json => setProdDet(json))
+    }, [id]);
     
     return (
         <div className="py-8">
